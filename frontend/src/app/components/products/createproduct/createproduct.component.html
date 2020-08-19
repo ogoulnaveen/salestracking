@@ -1,0 +1,127 @@
+<div class="button-page">
+    <div class="row">
+  
+      <div class="col-sm-12">
+        <app-card [title]="'Create Products' | translate">
+          <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+            <div class="card-header">
+              <h2> 
+                  <span *ngIf="!isUpdate"></span> 
+                  <span *ngIf="isUpdate">{{'Add New' | translate}}</span>
+              </h2>
+              </div>
+              <div class="card-body">
+          <!--   <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Product Id<span
+                class="text-danger font-weight-bold">
+                *</span></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="productDetail.product_id" name="product_id"
+                required pattern="[a-zA-Z0-9]+" #product_id="ngModel"  
+                [ngClass]="{ 'is-invalid': f.submitted && product_id.invalid, 
+                'is-valid': f.submitted && product_id.valid }"
+               required/>
+               <div *ngIf="f.submitted && product_id.invalid" class="invalid-feedback">
+                <div *ngIf="product_id.errors.required"> Please provide product id</div>
+             
+            <div *ngIf="product_id.errors.pattern">Id should be only in Alphanumeric
+               </div>
+            </div>        
+              </div>
+            </div> -->
+
+         
+              
+          <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Product Name' | translate}}<span
+                class="text-danger font-weight-bold">
+                *</span></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="productDetail.product_name" name="product_name"
+                pattern="^(?:[A-Za-z0-9]+)(?:[A-Za-z0-9 _]*)$" #product_name="ngModel"  
+                [ngClass]="{ 'is-invalid': f.submitted && product_name.invalid, 
+                'is-valid': f.submitted && product_name.valid }"
+               required/>
+               <div *ngIf="f.submitted && product_name.invalid" class="invalid-feedback">
+                <div *ngIf="product_name.errors.required"> {{'Please provide product name' | translate}}</div>
+             
+            <div *ngIf="product_name.errors.pattern">{{'provide valid product'| translate}}
+               </div>
+            </div>
+              </div>
+            </div>
+  
+  
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Cost Price' | translate}}<span
+                class="text-danger font-weight-bold">
+                *</span></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="productDetail.cost" name="cost"
+                pattern="[0-9]*[.]?[0-9]+" #cost="ngModel"  
+                [ngClass]="{ 'is-invalid': f.submitted && cost.invalid, 
+                'is-valid': f.submitted && cost.valid }"
+               required/>
+               <div *ngIf="f.submitted && cost.invalid" class="invalid-feedback">
+                <div *ngIf="cost.errors.required">{{'Please provide cost price' | translate}}</div>
+             
+            <div *ngIf="cost.errors.pattern">{{'only number allowed' | translate}}
+               </div>
+            </div>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Supplier Name' | translate}}<span
+                class="text-danger font-weight-bold">
+                *</span></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="productDetail.supplier_name" name="supplier_name"
+                pattern="[a-zA-Z_]+" #supplier_name="ngModel"  
+                [ngClass]="{ 'is-invalid': f.submitted && supplier_name.invalid, 
+                'is-valid': f.submitted && supplier_name.valid }"
+               required/>
+               <div *ngIf="f.submitted && supplier_name.invalid" class="invalid-feedback">
+                <div *ngIf="supplier_name.errors.required"> {{'Please provide supplier name' | translate}}</div>
+             
+            <div *ngIf="supplier_name.errors.pattern">{{'only alphabets allowed' | translate}}
+               </div>
+            </div>
+              </div>
+            </div>
+      
+           
+            <div class="form-group row">
+              <label  for="category_name" class="col-sm-2 col-form-label">{{'Category List' | translate}}<span
+                class="text-danger font-weight-bold">
+                *</span></label>
+            
+                <div class="col-sm-10">
+                  <select class="form-control" name="category_name" [(ngModel)]="productDetail.category_name"
+                      #category_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && category_name.invalid, 
+                      'is-valid': f.submitted && category_name.valid }"
+                     required >
+                      <option *ngFor="let obj of categoryDetail" [value]="obj.category_name">{{obj.category_name}}
+                      </option>
+                  </select> 
+                  <div *ngIf="f.submitted && category_name.invalid" class="invalid-feedback">
+                      <div *ngIf="category_name.errors.required">{{'Required Categoryname' | translate}}</div>
+                  </div>
+              </div>
+          </div>
+          <button  class="btn btn-success btn-round">
+            <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+            <span *ngIf="isUpdate">{{'Update' | translate}}</span>
+        </button>
+        <button type="button" class="btn btn-light btn-round"
+                 (click)="onClickForm()">{{'Reset' | translate}}</button>
+               <button class="btn btn-danger btn-round" type="button" appCancelbutton >{{'Cancel' | translate}}</button>
+  </div>
+  
+          </form>
+
+        </app-card>
+      </div>
+  
+  
+  

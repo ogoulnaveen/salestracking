@@ -1,0 +1,187 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+        <div class="card dashcard">
+            <div class="card-body dashbody">
+              <h5 class="card-title dashtitle" style="color: #20639b;">
+                 <img src="http://localhost:3000/images/Users.png">  {{'Userstotal' | translate}} </h5>
+              <br>
+              <a class="btn btn-primary" style="background-color: #20639b;">{{usersValue}} {{'Userstotal' | translate}} </a>
+              <a href="javascript:;" (click)="hideshow(1)" class="viewmore" id="1view">{{'View More ▼' | translate}}</a>
+              <hr class="viewmorehr">
+              <div class="optionsDiv" id="1options">
+                <a class="btn btn-primary routerlink" style="color: #20639c !important; background-color: #8fb1cd !important;" routerLink="/user/adduser" routerLinkActive="active" >{{'AddUsers' | translate}}</a>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card dashcard">
+            <div class="card-body dashbody">
+              <h5 class="card-title dashtitle" style="color: #173f5f;"> <img src="http://localhost:3000/images/Products.png">  {{'Productstotal' | translate}} </h5>
+              <br>
+              <a class="btn btn-primary" style="background-color: #173f5f;">{{productsValue}} {{'Productstotal' | translate}} </a>
+              <a href="javascript:;" (click)="hideshow(2)" class="viewmore" id="2view">{{'View More ▼' | translate}}</a>
+              <hr class="viewmorehr">
+              <div class="optionsDiv" id="2options">
+                <a class="btn btn-primary routerlink" style="color: #173f5f !important; background-color: #718596 !important;" routerLink="/products/createproduct" routerLinkActive="active" >{{'CreateProducts' | translate}}</a>
+              </div>
+            </div>
+        </div>
+      </div>      
+      <div class="col-lg-4">
+        <div class="card dashcard">
+            <div class="card-body dashbody">
+              <h5 class="card-title dashtitle" style="color: #f6d55c;"> <img src="http://localhost:3000/images/Quotes.png">  {{'Quotestotal' | translate}} </h5>
+              <br>
+              <a class="btn btn-primary" style="background-color: #f6d55c;">{{quotesValue}} {{'Quotestotal' | translate}} </a>
+              <a href="javascript:;" (click)="hideshow(3)" class="viewmore" id="3view">{{'View More ▼' | translate}}</a>
+              <hr class="viewmorehr">
+              <div class="optionsDiv" id="3options">
+                <a class="btn btn-primary routerlink" style="color: #f6d55c !important; background-color: #ede9db !important;" routerLink="/quotation/createquotation" routerLinkActive="active" >{{'CreateQuotation' | translate}}</a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card dashcard">
+            <div class="card-body dashbody">
+              <h5 class="card-title dashtitle" style="color: #3caea3;"> <img src="http://localhost:3000/images/Vendors.png"> {{'Vendorstotal' | translate}} </h5>
+              <br>
+              <a class="btn btn-primary" style="background-color: #3caea3;">{{customersValue}} {{'Vendorstotal' | translate}} </a>
+              <a href="javascript:;" (click)="hideshow(4)" class="viewmore" id="4view">{{'View More ▼' | translate}}</a>
+              <hr class="viewmorehr">
+              <div class="optionsDiv" id="4options">
+                <a class="btn btn-primary routerlink" style="color: #3caea3 !important; background-color: #9bb0ae !important;" routerLink="/vendors/createvendor" routerLinkActive="active" >{{'Addcustomers' | translate}}</a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card dashcard">
+            <div class="card-body dashbody">
+              <h5 class="card-title dashtitle" style="color: #ed553b;"><img src="http://localhost:3000/images/Visits.png">  {{'Visitstotal' | translate}} </h5>
+              <br>
+              <a class="btn btn-primary" style="background-color: #ed553b;">{{visitsValue}} {{'Visitstotal' | translate}} </a>
+              <a href="javascript:;" (click)="hideshow(5)" class="viewmore" id="5view">{{'View More ▼' | translate}}</a>
+              <hr class="viewmorehr">
+              <div class="optionsDiv" id="5options">
+                <a class="btn btn-primary routerlink" style="color: #ed553b !important; background-color: #e9a69a !important;" routerLink="/visitmode/addvisit" routerLinkActive="active" >{{'Add Visits' | translate}}</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card dashcard">
+            <div class="card-body dashbody">
+              <h5 class="card-title dashtitle" style="color: #6d8d17;"> <img src="http://localhost:3000/images/Expenses.png"> {{'Expenses' | translate}} </h5>
+              <br>
+              <a class="btn btn-primary" style="background-color: #6d8d17;">{{expensesValue}} {{'Expenses' | translate}} </a>
+              <a href="javascript:;" (click)="hideshow(6)" class="viewmore" id="6view">{{'View More ▼' | translate}}</a>
+              <hr class="viewmorehr">
+              <div class="optionsDiv" id="6options">
+                <a class="btn btn-primary routerlink" style="color: #6d8d17 !important; background-color: #c1c3bb !important;" routerLink="/expense/addexpense" routerLinkActive="active" >{{'Add Expenses' | translate}}</a>
+              </div>
+            </div>
+        </div>
+  </div>
+   
+  </div>
+</div>
+
+<!-- <div class="container">
+<div class="row">
+  <div class="col-lg-4">  
+    <div class="card-box ">          
+      <div class="panel panel-bd" width="229px">
+          <div class="panel-body">
+              <div class="statistic-box">
+                  <h2><span class="slight" style="margin-left: 70px;">
+                    <i class="fa fa-users fa-2x" style="color: #00c0ef;" aria-hidden="true"></i>
+                      </span>
+                  </h2>
+                  <div class="small" style="font-size: 20px;margin-top: 20px;text-align: center;">
+                    <a routerLink="/user/adduser" routerLinkActive="active" class="routerlink" style="font-size: large;">{{'AddUsers' | translate}}</a> </div>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-box">
+      <div class="panel panel-bd"  width="229px">
+          <div class="panel-body">
+              <div class="statistic-box">
+                  <h2><span class="slight" style="margin-left: 70px;">
+                    <i class="fa fa-shopping-basket fa-2x" style="color: #00a65a;" aria-hidden="true"></i>
+                  </span></h2>
+                  <div class="small" style="font-size: 20px;margin-top: 20px;text-align: center;">
+                    <a routerLink="/products/createproduct" routerLinkActive="active"style="font-size: large;">{{'CreateProducts' | translate}}</a> </div>
+              </div>
+          </div>
+      </div>
+      </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-box">
+      <div class="panel panel-bd"  width="229px">
+          <div class="panel-body">
+              <div class="statistic-box">
+                  <h2><span class="slight" style="margin-left: 70px;">
+                    <i class="fa fa-sort-amount-asc fa-2x" style="color: #f39c12;" aria-hidden="true"></i>
+                  </span></h2>
+                  <div class="small" style="font-size: 20px;margin-top: 20px;text-align: center;">
+                    <a routerLink="/quotation/createquotation" routerLinkActive="active" style="font-size: large;">{{'CreateQuotation' | translate}}</a> </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-box">
+      <div class="panel panel-bd"  width="229px">
+          <div class="panel-body">
+              <div class="statistic-box">
+                  <h2><span class="slight" style="margin-left: 70px;">
+                    <i class="fa fa-id-badge fa-2x" style="color: #d9534f;" aria-hidden="true"></i>
+                  </span></h2>
+                  <div class="small" style="font-size: 17px;margin-top: 20px;text-align: center;">
+                    <a routerLink="/vendors/createvendor" routerLinkActive="active" style="font-size: large;">{{'Addcustomers' | translate}}</a> </div>
+              </div>
+          </div>
+      </div>
+      </div>
+  </div><div class="col-lg-4">
+    <div class="card-box">
+      <div class="panel panel-bd"  width="229px">
+          <div class="panel-body">
+              <div class="statistic-box">
+                  <h2><span class="slight" style="margin-left: 70px;">
+                    <i class="fa fa-map-marker fa-2x" style="color: #a55b10;" aria-hidden="true"></i>
+                  </span></h2>
+                  <div class="small" style="font-size: 17px;margin-top: 20px;text-align: center;">
+                    <a routerLink="/visitmode/addvisit" routerLinkActive="active" style="font-size: large;">{{'Add Visits' | translate}}</a> </div>
+              </div>
+          </div>
+      </div>
+      </div>
+  </div><div class="col-lg-4">
+    <div class="card-box">
+      <div class="panel panel-bd"  width="229px">
+          <div class="panel-body">
+              <div class="statistic-box">
+                  <h2><span class="slight" style="margin-left: 70px;">
+                    <i class="ti-stats-up fa-2x" style="color: #6d8d17;" aria-hidden="true"></i>
+                  </span></h2>
+                  <div class="small" style="font-size: 17px;margin-top: 20px;text-align: center;">
+                    <a routerLink="/expense/addexpense" routerLinkActive="active" style="font-size: large;">{{'Add Expenses' | translate}}</a> </div>
+              </div>
+          </div>    </div>
+      </div>  </div>
+</div>
+</div><br><br> -->
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br><br>

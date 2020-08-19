@@ -1,0 +1,210 @@
+
+  <div class="col-md-12">
+  <div class="card" > 
+    <i class="fa fa-calculator fa-3x" style="color: #57aeb6;"  aria-hidden="true">
+  </i>
+    <div class="card-body" style="margin-top: -66px;
+    margin-left: 26px;">
+      <h4>{{'Expenses' | translate}}</h4>
+      <h5 class="card-title" style="margin-top: -66px;
+      margin-left: -2px;">{{'Add Expenses Item' | translate}}</h5>
+    <div class="btn-toolbar text-center well1">
+      <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a routerLink="/dashboard" routerLinkActive="active" class="routerlink" style="color: white;">{{'Home' | translate}}</a> 
+      </button><span *ngIf="CAN_ADD">
+        <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+        <a  routerLink="/expense/addexpense" routerLinkActive="active" class="routerlink" style="color: white;"> {{'Add Expenses' | translate}}</a> 
+      </button>
+      </span> </div></div>
+  </div>
+  </div>
+  
+    <div class="col-md-12">
+    <!--   <app-card *ngIf="this.util.langDataSource.value != 'ar'" [title]="'Manage Expenses Item'">
+        <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+          <div class="card-header">
+            <h2> 
+                <span *ngIf="!isUpdate"></span> 
+                <span *ngIf="isUpdate">{{'Add New' | translate}}</span>
+            </h2>
+            </div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">{{'Expenses Item' | translate}}
+                  <span
+                  class="text-danger font-weight-bold">
+                  *</span>
+                </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control"  [(ngModel)]="expenseItemDetail.expense_item" name="expense_item"
+                  pattern="^(?:[A-Za-z]+)(?:[A-Za-z _]*)$" #expense_item="ngModel"  
+                  [ngClass]="{ 'is-invalid': f.submitted && expense_item.invalid, 
+                  'is-valid': f.submitted && expense_item.valid }"
+                 required/>
+                 <div *ngIf="f.submitted && expense_item.invalid" class="invalid-feedback">
+                  <div *ngIf="expense_item.errors.required">{{'Please provide Expense item' | translate}}</div>
+               
+                  <div *ngIf="expense_item.errors.pattern">{{'only alphabets allowed' | translate}}
+                 </div>
+              </div> 
+                </div>
+              </div>
+            
+              <button  class="btn btn-success btn-round">
+                <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+                <span *ngIf="isUpdate">{{'Update' | translate}}</span>
+            </button>
+            <button type="button" class="btn btn-light btn-round"
+                     (click)="onClickForm()">{{'Reset' | translate}}</button>
+                     <button class="btn btn-danger btn-round" type="button" appCancelbutton>{{'Cancel' | translate}}</button>
+          </div>
+        </form>
+      </app-card> -->
+     <!--  <app-card *ngIf="this.util.langDataSource.value == 'ar'" [title]="'إدارة بنود المصروفات'">
+    
+          <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+            <div class="card-header">
+              <h2> 
+                  <span *ngIf="!isUpdate"></span> 
+                  <span *ngIf="isUpdate">{{'Add New' | translate}}</span>
+              </h2>
+              </div>
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">{{'Expenses Item' | translate}}
+                    <span
+                    class="text-danger font-weight-bold">
+                    *</span>
+                  </label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control"  [(ngModel)]="expenseItemDetail.expense_item" name="expense_item"
+                    pattern="^(?:[A-Za-z]+)(?:[A-Za-z _]*)$" #expense_item="ngModel"  
+                    [ngClass]="{ 'is-invalid': f.submitted && expense_item.invalid, 
+                    'is-valid': f.submitted && expense_item.valid }"
+                   required/>
+                   <div *ngIf="f.submitted && expense_item.invalid" class="invalid-feedback">
+                    <div *ngIf="expense_item.errors.required">{{'Please provide Expense item' | translate}}</div>
+                 
+                    <div *ngIf="expense_item.errors.pattern">{{'only alphabets allowed' | translate}}
+                   </div>
+                </div> 
+                  </div>
+                </div>
+              
+                <button  class="btn btn-success btn-round">
+                  <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+                  <span *ngIf="isUpdate">{{'Update' | translate}}</span>
+              </button>
+              <button type="button" class="btn btn-light btn-round"
+                       (click)="onClickForm()">{{'Reset' | translate}}</button>
+                       <button class="btn btn-danger btn-round" type="button" appCancelbutton>{{'Cancel' | translate}}</button>
+            </div>
+          </form>
+        </app-card> -->
+    </div>
+<div class="col-md-12 ">
+  <div class="card">
+    <div class="card-body">
+      <h5>{{'Expense Details' | translate}}</h5>
+    </div><hr>
+    <div class="btn-toolbar text-center well" *ngIf="SHOW_ICONS">
+      <label id="mySelect" class="">{{'Show' | translate}}</label>
+      <select name="select" id="mySelect"class="">
+        <option value="opt1">10</option>
+        <option value="opt2">25</option>
+        <option value="opt3">45</option>
+       
+        <option value="opt4">50</option>
+        <option value="opt4">all</option>
+        
+
+      </select>
+      <label id="mySelect" class="">{{'entries' | translate}}</label>
+     
+      <button type="button" (click)="generateCsv()" class="btn btn-success  col-xs-5 margin-left">
+        <i class="fa fa-building-o" aria-hidden="true"></i> CSV
+      </button>
+      <button type="button" (click)="downloadPdf()" class="btn btn-success   col-xs-5 margin-left">
+        <i class="fa fa-file-pdf-o" aria-hidden="true" ></i> PDF
+      </button>
+      <button type="button"  (click)="exportToExcel()" class="btn btn-success  col-xs-5 margin-left">
+        <i class="fa fa-table" aria-hidden="true"></i> Excel
+      </button>
+      <button type="button" (click)="exportToPrint()" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+        <i class="fa fa-print" aria-hidden="true"></i>{{'Print' | translate}}
+      </button>
+     
+            <div class="col-2" style="margin-left: 930px;
+            margin-top: -33px;
+            margin-bottom: 13px;">
+                <div class="input-group">
+                     <div class="input-group-append">
+                      <button class="btn btn-secondary" type="submit">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                    <input class="form-control search-input rounded-0 "  type="search" aria-label="Search"
+                    (keyup)='search($event.target.value)'>
+                   
+                </div>
+            </div>
+          
+        </div>
+   
+    
+    <div class="card-body product-table p-t-35" >
+      
+      <div class="table-responsive" >
+        
+        <table  id="contentToConvert" class="table" [mfData]="filteredTableDataArr" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead class="thead">
+            <tr>
+            <!--   <th width="20%">
+                <mfDefaultSorter by="expense_id">Expenses Id</mfDefaultSorter>
+              </th> -->
+            
+              <th width="20%">
+                <mfDefaultSorter by="expense_item">{{'Expenses Item' | translate}}</mfDefaultSorter>
+              </th>
+              <th width="20%">
+                <mfDefaultSorter by="date">{{'Date' | translate}}</mfDefaultSorter>
+              </th>
+              <th width="20%">
+                <mfDefaultSorter by="amount">{{'Amount' | translate}}</mfDefaultSorter>
+              </th>
+              <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+                {{'Actions' | translate}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of mf.data">
+             <!--  <td>{{obj.expense_id}}</td> -->
+              <td>{{obj.expense_item}}</td>
+              <td>{{obj.date}}</td>
+              <td>{{obj.amount}}</td>
+            
+             
+              <td *ngIf="SHOW_EDIT_DELETE">
+                <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i class="fa fa-edit"></i></button>
+                <span *ngIf="ALL_DELETE_ALLOWED">
+                  <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                      class="fa fa-trash"></i></button>
+                  </span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25,50]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

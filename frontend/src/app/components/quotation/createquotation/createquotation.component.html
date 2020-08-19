@@ -1,0 +1,196 @@
+<div class="col-sm-12">
+  <app-card [title]="'Createquotation' | translate">
+    <div class="btn-toolbar text-center well1">
+      <button (click)=" exportToPrint()" type="button" class="btn btn-success col-xs-5 margin-left">
+        <i class="fa fa-print" aria-hidden="true"></i>{{'Print' | translate}}
+      </button>
+    </div>
+    <form id="contentToConvert" class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+      <div class="card-header">
+        <h2>
+          <span *ngIf="!isUpdate"></span>
+          <span *ngIf="isUpdate">{{'Add New' | translate}}</span>
+        </h2>
+      </div>
+      <div class="card-body">
+      <!--   <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Quotation Number<span class="text-danger font-weight-bold">
+              *</span>
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="quoteDetail.quotationnumber" name="quotationnumber"
+              required pattern="[0-9]+" #quotationnumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && quotationnumber.invalid, 
+                'is-valid': f.submitted && quotationnumber.valid }" required />
+            <div *ngIf="f.submitted && quotationnumber.invalid" class="invalid-feedback">
+              <div *ngIf="quotationnumber.errors.required"> Please provide Quotation number</div>
+
+              <div *ngIf="quotationnumber.errors.pattern">It should be only in numeric
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="form-group row"  *ngIf="!isUpdate">
+          <label class="col-sm-2 col-form-label"  >{{'Customer Name' | translate}}
+            <span class="text-danger font-weight-bold">
+              *</span>
+          </label>
+          <div class="col-sm-10">
+            <!-- <input type="text" class="form-control" [(ngModel)]="quoteDetail.customername" name="customername"
+              pattern="[a-zA-Z_]+" #customername="ngModel" [ngClass]="{ 'is-invalid': f.submitted && customername.invalid, 
+              'is-valid': f.submitted && customername.valid }" required /> -->
+            <div class="ng-autocomplete">
+              <ng-autocomplete [data]="customers" [searchKeyword]="customer_keyword" [itemTemplate]="itemTemplate"
+                (inputChanged)='onChangeSearch($event)' (selected)='onCustomerSelect($event)'  historyIdentifier="customers"
+                (inputFocused)='onFocused($event)' [notFoundTemplate]="notFoundTemplate" [(ngModel)]="customer_name"
+                name="autompleteName" required >
+               
+              </ng-autocomplete>
+              
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.customer_name"></a>
+              </ng-template>
+
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+                
+            
+              </ng-template> 
+             
+             
+            </div>
+          </div>
+        </div>
+      
+        <div class="form-group row" *ngIf="isUpdate">
+          <label class="col-sm-2 col-form-label" >{{'Customer Name' | translate}}<span class="text-danger font-weight-bold">
+              *</span></label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="quoteDetail.customer_name" name="customerName" readonly required
+               #customerName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && customerName.invalid, 
+              'is-valid': f.submitted && customerName.valid }" readonly />
+          </div>
+          <div *ngIf="f.submitted && customerName.invalid" class="invalid-feedback">
+            <div *ngIf="customerName.errors.required">{{'Please provide Customer Name' | translate}}</div>
+
+           
+          </div> 
+        </div> 
+        <div class="form-group row" >
+          <label class="col-sm-2 col-form-label" >{{'Mobile' | translate}}<span class="text-danger font-weight-bold">
+              *</span></label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="quoteDetail.phone" name="mobile" required
+              pattern="^[0-9()\-+\s]+$" #mobile="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mobile.invalid, 
+              'is-valid': f.submitted && mobile.valid }" readonly />
+
+             <div *ngIf="f.submitted && mobile.invalid" class="invalid-feedback">
+              <div *ngIf="mobile.errors.required">{{'Please provide phone number' | translate}}</div>
+
+              <div *ngIf="mobile.errors.pattern">{{'Phone number should be only numbers' | translate}}
+              </div>
+            </div> 
+          </div>
+        </div> 
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Quotation Date' | translate}}
+            <span class="text-danger font-weight-bold">
+              *</span>
+          </label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" [(ngModel)]="quoteDetail.quotation_date" name="quotation_date"
+              #quotation_date="ngModel" [ngClass]="{ 'is-invalid': f.submitted && quotation_date.invalid, 
+              'is-valid': f.submitted && quotation_date.valid }" required />
+          </div></div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Product Name' | translate}}
+            <span class="text-danger font-weight-bold">
+              *</span>
+          </label>
+          <div class="col-sm-10" >
+            <mat-form-field class="example-full-width" appearance="none" floatLabel="never" >
+              <input type="text" matInput [matAutocomplete]="auto" [formControl]="userControl"
+                [(ngModel)]="quoteDetail.product_name" name="product_name" required>
+                <mat-error *ngIf="userControl.hasError('required')">Please choose any products</mat-error>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let product of filteredProducts | async" [value]="selectedProducts">
+                <div (click)="optionClicked($event, product)"required >
+                  <mat-checkbox [checked]="product.selected" (change)="toggleSelection(product)"
+                    (click)="$event.stopPropagation()">
+                    {{ product.product_name }}
+                  </mat-checkbox>
+                </div>
+              </mat-option>
+            </mat-autocomplete>
+           
+           
+          </mat-form-field>
+          </div>
+        </div> 
+       <div class="table-responsive" *ngIf="selectedProducts.length">
+          <table class="table" [mfData]="selectedProducts" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <thead class="thead">
+              <tr>
+                <th width="20%">
+                  <mfDefaultSorter by="product_name">{{'Product Name' | translate}}</mfDefaultSorter>
+                </th>
+                <th width="20%">
+                  <mfDefaultSorter by="customer_name">{{'Product Category' | translate}}</mfDefaultSorter>
+                </th>
+                <th width="20%">
+                  <mfDefaultSorter by="mobile">{{'Product Rate' | translate}}</mfDefaultSorter>
+                </th>
+                <th width="20%">
+                  <mfDefaultSorter by="mobile">{{'Product Quantity' | translate}}</mfDefaultSorter>
+                </th>
+                <th width="20%">
+                  <mfDefaultSorter by="quotation_date">{{'Product Discount' | translate}}</mfDefaultSorter>
+                </th>
+                <th width="20%">
+                  <mfDefaultSorter by="product_name">{{'Product Total' | translate}}</mfDefaultSorter>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of mf.data;let i=index">
+                <td>{{obj.product_name}}</td>
+                <td>{{obj.category_name}}</td>
+                <td>{{obj.cost}}</td>
+                <td>
+                  <input type="number" name="quantity-{{i}}" [(ngModel)]="obj.quantity" (keyup)="onChangeProductQnt(i, $event)">
+                </td>
+                <td>
+                  <input type="number" name="discount-{{i}}" [(ngModel)]="obj.discount"
+                    (keyup)="onChangeProductDiscount(i, $event)">
+                </td>
+                <td>{{obj.product_Total}}</td>
+              </tr>
+              <tr>
+                <td colspan="5"></td>
+                <td colspan="1">{{'Total' | translate}}: {{total_cost}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">
+                  <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div> 
+        <button  class="btn btn-success btn-round">
+          <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+          <span *ngIf="isUpdate">{{'Update'| translate}}</span>
+      </button>
+     <!--  <button type="button" class="btn btn-light btn-round"
+               (click)="onClickForm()">Reset</button> -->
+             <button class="btn btn-danger btn-round" type="button" appCancelbutton >{{'Cancel' | translate}}</button>
+      </div>
+    </form>
+    <div class="col-md-12">
+
+    </div>
+  </app-card>
+</div>

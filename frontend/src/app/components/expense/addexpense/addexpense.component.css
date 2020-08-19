@@ -1,0 +1,29 @@
+.btn-success{
+    background-color: #57aeb6;
+    border: none;
+}
+
+.margin-left{
+    margin-left: 10px !important;
+}
+.btn{
+    margin-right: 10px;
+}
+.well{
+    display: block;
+}
+
+.well1
+{
+    display: block;
+    float: right;
+}
+.btn-light{
+    color: #f2f5f8;
+      background-color: #757b80;
+      border-color: #d3d9df;
+  }
+/* .col-form-label {
+    font-size: 14px;
+    margin-left: 164px;
+} */

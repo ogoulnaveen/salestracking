@@ -1,0 +1,108 @@
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+  <!-- starts -->
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Authentication card start -->
+        <div class="login-card card-body auth-body">
+          <form class="md-float-material" [formGroup]="registrationForm" (ngSubmit)="onRegistration()">
+            <div class="text-center">
+              <img src="assets/images/auth/logo.png" alt="Mash Able">
+            </div>
+            <div class="auth-box">
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h3 class="text-center txt-primary">Sign up. It is fast and easy.</h3>
+                </div>
+              </div>
+              <hr/>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="username" placeholder="Choose Username">
+                <span class="md-line"></span>
+              </div>
+              <div *ngIf="registerFormControl.username.touched && registerFormControl.username.hasError('required')">Required</div>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="email" placeholder="Your Email Address">
+                <span class="md-line"></span>
+              </div>
+              <div *ngIf="registerFormControl.email.touched && registerFormControl.email.hasError('required')">Required</div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="password" placeholder="Choose Password">
+                <span class="md-line"></span>
+              </div>
+              <div *ngIf="registerFormControl.password.touched && registerFormControl.password.hasError('required')">Required</div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+                <span class="md-line"></span>
+              </div>
+              <div *ngIf="registerFormControl.confirmPassword.touched && registerFormControl.confirmPassword.hasError('required')">Required</div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="first_name" placeholder="First name">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="last_name" placeholder="Last name">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="phone" placeholder="Phone">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <select name="select" class="form-control" formControlName="usertype_name" (change) = "onUserType($event)">
+                  <option value="" selected>User Type</option>
+                  <option value='Admin'>Admin</option>
+                  <option value='Manager'>Manager</option>
+                  <option value='Sales User'>Sales User</option>
+                  <option value='Customer'>Customer</option>
+                </select>
+                <span class="md-line"></span>
+              </div>
+              <div *ngIf="registerFormControl.usertyp_ename.touched && registerFormControl.usertype_name.hasError('required')">Required</div>
+              <!-- <div class="row m-t-25 text-left">
+                <div class="col-md-12">
+                  <div class="checkbox-fade fade-in-primary">
+                    <label>
+                      <input type="checkbox" value="">
+                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                      <span class="text-inverse">I read and accept <a href="javascript:;">Terms &amp; Conditions.</a></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="checkbox-fade fade-in-primary">
+                    <label>
+                      <input type="checkbox" value="">
+                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                      <span class="text-inverse">Send me the <a href="javascript:;">Newsletter</a> weekly.</span>
+                    </label>
+                  </div>
+                </div>
+              </div> -->
+              <div class="row m-t-30">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now.</button>
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-md-10">
+                  <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
+                  <p class="text-inverse text-left"><b>Your Autentification Team</b></p>
+                </div>
+                <div class="col-md-2">
+                  <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- end of form -->
+        </div>
+        <!-- Authentication card end -->
+      </div>
+      <!-- end of col-sm-12 -->
+    </div>
+    <!-- end of row -->
+  </div>
+  <!-- end of -->
+</section>

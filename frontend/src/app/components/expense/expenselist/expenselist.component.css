@@ -1,0 +1,68 @@
+.btn-danger{
+    margin-left: 0px;
+    margin-right:0px;
+}
+.btn-primary{
+    background-color: #57aeb6;
+    border: none;
+}
+.thead{
+    background-color: #87ceeb54;
+    color: black;background-color: #57aeb6;
+    color: #fff;
+    font-family: sans-serif;
+}
+.btn{
+    margin-right: 10px;
+}
+.well1
+{
+    display: block;
+    float: right;
+}
+.btn-light{
+    color: #f2f5f8;
+      background-color: #757b80;
+      border-color: #d3d9df;
+  }
+
+.btn-secondary{
+    background-color: #57aeb6;
+    
+        height: 34px;
+    /* margin-bottom: -12px; */
+    margin-top: 1px;
+}
+
+.btn-success{
+    background-color: #57aeb6;
+  
+    border: none;
+    height: 35px;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #ddd;
+}
+
+.margin-left{
+    margin-left: 3px !important;
+}
+#mySelect{
+float: left;
+}
+.well{
+  display: block;
+}
+
+
+.routerlink{
+    font-size: medium !important;}

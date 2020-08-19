@@ -1,0 +1,253 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card *ngIf="this.util.langDataSource.value != 'ar'" [title]="'Search Visits'" [classHeader]="true">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row align-items-end mb-4">
+                        <div class="col-md-3">
+                            <label for="email">{{'Sales Email' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                              <ng-autocomplete [data]="salesUsers" [searchKeyword]="keyword"
+                                (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                                (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate" [(ngModel)]="userObj" name="userObj"
+                                >
+                              </ng-autocomplete>
+            
+                              <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.email"></a>
+                              </ng-template>
+            
+                              <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                              </ng-template>
+                            </div>
+                            <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+                          </div>
+                        <div class="col-md-3">
+                            <label for="meetingNotes">{{'From Date' | translate}}:</label>
+                            <input type="date" class="form-control" [(ngModel)]="fromDate" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="meetingNotes">{{'To Date' | translate}}:</label>
+                            <input type="date" class="form-control" [(ngModel)]="toDate" />
+                        </div>
+                        <div class="col-md-2">
+                            <div class="btn btn-primary search-btn" (click)="searchVisits()">{{'Search' | translate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="visitLists;">
+                <div class="col-md-12">
+                    <agm-map style="height: 335px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [zoomControl]="false" [disableDefaultUI]="false"
+                        (mapClick)="mapClicked($event)">
+            
+                        <agm-marker *ngFor="let visit of visitLists" 
+                        [latitude]="visit.lat" [longitude]="visit.long" 
+                        [label]="visit.name"
+                        [agmFitBounds]="true"
+                        (click)="onClickMarker(infoWindow, $event)"
+                        >
+                        <agm-info-window #infoWindow [latitude]="visit.lat" [longitude]="visit.long">
+                            <div>
+                                <h6>Email: {{visit.email}}</h6>
+                                <br/>
+                                <h6>Name: {{visit.customer_name}}</h6>
+                                <a (click)="openMapInNewTab(visit.lat,visit.long)"> {{'More' | translate}}</a>
+                            </div>
+                        </agm-info-window>
+                        </agm-marker>
+                    </agm-map>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div class="card-body product-table p-t-35">
+                        <div class="table-responsive">
+                            <table class="table" [mfData]="visitLists" #mf="mfDataTable" [mfRowsOnPage]="10">
+                                <thead class="thead">
+                                    <tr>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="vendor_id">{{'Customer id' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="customer_name">{{'Customer Name' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="email">{{'Email' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="phone">{{'Mobile' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="first_name">{{'First Name' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="last_name">{{'Last Name' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+                                            {{'Actions' | translate}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let obj of mf.data">
+                                        
+                                        <td>{{obj.vendor_id}}</td>
+                                        <td>{{obj.customer_name}}</td>
+                                        <td>{{obj.email}}</td>
+                                        <td>{{obj.phone}}</td>
+                                        <td>{{obj.first_name}}</td>
+                                        <td>{{obj.last_name}}</td>
+                                        <td *ngIf="SHOW_EDIT_DELETE">
+                                            <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i
+                                                class="fa fa-edit"></i></button>
+                                                <span *ngIf="ALL_DELETE_ALLOWED">
+                                                  <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                                                      class="fa fa-trash"></i></button>
+                                                  </span>
+                                          </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isNoRecords">
+                <h3>{{'No records found' | translate}} </h3>
+            </div>
+        </app-card>
+        <app-card *ngIf="this.util.langDataSource.value == 'ar'" [title]="'بحث الزيارات'" [classHeader]="true">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row align-items-end mb-4">
+                        <div class="col-md-3">
+                            <label for="email">{{'Sales Email' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                              <ng-autocomplete [data]="salesUsers" [searchKeyword]="keyword"
+                                (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                                (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate" [(ngModel)]="userObj" name="userObj"
+                                >
+                              </ng-autocomplete>
+            
+                              <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.email"></a>
+                              </ng-template>
+            
+                              <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                              </ng-template>
+                            </div>
+                            <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+                          </div>
+                        <div class="col-md-3">
+                            <label for="meetingNotes">{{'From Date' | translate}}:</label>
+                            <input type="date" class="form-control" [(ngModel)]="fromDate" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="meetingNotes">{{'To Date' | translate}}:</label>
+                            <input type="date" class="form-control" [(ngModel)]="toDate" />
+                        </div>
+                        <div class="col-md-2">
+                            <div class="btn btn-primary search-btn" (click)="searchVisits()">{{'Search' | translate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="visitLists;">
+                <div class="col-md-12">
+                    <agm-map style="height: 335px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [zoomControl]="false" [disableDefaultUI]="false"
+                        (mapClick)="mapClicked($event)">
+            
+                        <agm-marker *ngFor="let visit of visitLists" 
+                        [latitude]="visit.lat" [longitude]="visit.long" 
+                        [label]="visit.name"
+                        [agmFitBounds]="true"
+                        (click)="onClickMarker(infoWindow, $event)"
+                        >
+                        <agm-info-window #infoWindow [latitude]="visit.lat" [longitude]="visit.long">
+                            <div>
+                                <h6>Email: {{visit.email}}</h6>
+                                <br/>
+                                <h6>Name: {{visit.customer_name}}</h6>
+                                <a (click)="openMapInNewTab(visit.lat,visit.long)"> {{'More' | translate}}</a>
+                            </div>
+                        </agm-info-window>
+                        </agm-marker>
+                    </agm-map>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div class="card-body product-table p-t-35">
+                        <div class="table-responsive">
+                            <table class="table" [mfData]="visitLists" #mf="mfDataTable" [mfRowsOnPage]="10">
+                                <thead class="thead">
+                                    <tr>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="vendor_id">{{'Customer id' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="customer_name">{{'Customer Name' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="email">{{'Email' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="phone">{{'Mobile' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="first_name">{{'First Name' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%">
+                                            <mfDefaultSorter by="last_name">{{'Last Name' | translate}}</mfDefaultSorter>
+                                        </th>
+                                        <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+                                            {{'Actions' | translate}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let obj of mf.data">
+                                   
+                                        <td>{{obj.vendor_id}}</td>
+                                        <td>{{obj.customer_name}}</td>
+                                        <td>{{obj.email}}</td>
+                                        <td>{{obj.phone}}</td>
+                                        <td>{{obj.first_name}}</td>
+                                        <td>{{obj.last_name}}</td>
+                                        <td *ngIf="SHOW_EDIT_DELETE">
+                                            <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i
+                                                class="fa fa-edit"></i></button>
+                                                <span *ngIf="ALL_DELETE_ALLOWED">
+                                                  <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                                                      class="fa fa-trash"></i></button>
+                                                  </span>
+                                          </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isNoRecords">
+                <h3>{{'No records found' | translate}} </h3>
+            </div>
+            </app-card>
+    </div>
+</div>
+<ng2-toasty [position]="'top-center'"></ng2-toasty>

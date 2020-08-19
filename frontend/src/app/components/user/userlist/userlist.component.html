@@ -1,0 +1,110 @@
+<div class="col-md-12 ">
+  <div class="card">
+    <div class="card-body">
+      <h5>{{'User Details' | translate}}</h5>
+    </div>
+    <div class="container py-2">
+      <div class="row">
+
+        <div class="input-group col-md-4">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <input class="form-control py-2 " placeholder="Search here" type="search" aria-label="Search"
+            (keyup)='search($event.target.value)'>
+        </div>
+        <div class="btn-toolbar text-center well" *ngIf="SHOW_ICONS">
+         
+          <button type="button" (click)="generateCsv()" class="btn btn-success  col-xs-5 margin-left">
+            <i class="fa fa-building-o" aria-hidden="true"></i> CSV
+          </button>
+          <button type="button" (click)="downloadPdf()" class="btn btn-success   col-xs-5 margin-left">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
+          </button>
+          <button type="button" (click)="exportToExcel()" class="btn btn-success  col-xs-5 margin-left">
+            <i class="fa fa-table" aria-hidden="true"></i> Excel
+          </button>
+          <button (click)=" exportToPrint()" type="button" class="btn btn-success col-xs-5 margin-left">
+            <i class="fa fa-print" aria-hidden="true"></i>{{'Print' | translate}}
+          </button></div>
+        <div class="btn-toolbar text-center well">
+
+          <button type="button" class="btn btn-success  margin-left">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <a routerLink="/dashboard" routerLinkActive="active" class="routerlink" style="color: white;">{{'Home' | translate}}</a>
+
+          </button>
+          <button type="button" class="btn btn-success  margin-left">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            <a routerLink="/user/adduser" routerLinkActive="active" class="routerlink" style="color: white;">
+              {{'AddUsers' | translate}}</a>
+
+          </button>
+
+
+        </div>
+
+      </div>
+    </div>
+    <hr>
+    <div class="card-body product-table p-t-35">
+
+      <div class="table-responsive">
+        
+        <table id="contentToConvert" class="table" [mfData]="filteredTableDataArr" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead class="thead">
+            <tr>
+              <!--  <th width="20%">
+                <mfDefaultSorter by="user_id">ID</mfDefaultSorter>
+              </th> -->
+              <th width="20%">
+                <mfDefaultSorter by="usertype_name">{{'User Type' | translate}}</mfDefaultSorter>
+              </th>
+
+              <th width="20%">
+                <mfDefaultSorter by="email">{{'Email' | translate}}</mfDefaultSorter>
+              </th>
+              <th width="20%">
+                <mfDefaultSorter by="first_name">{{'First Name' | translate}}</mfDefaultSorter>
+              </th>
+              <th width="20%">
+                <mfDefaultSorter by="last_name">{{'Last Name' | translate}}</mfDefaultSorter>
+              </th>
+              <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+                {{'Actions' | translate}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of mf.data">
+              <!--  <td>{{obj.user_id}}</td> -->
+              <td>{{obj.usertype_name}}</td>
+
+              <td>{{obj.email}}</td>
+              <td>{{obj.first_name}}</td>
+              <td>{{obj.last_name}}</td>
+              <td *ngIf="SHOW_EDIT_DELETE">
+                <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i
+                    class="fa fa-edit"></i></button>
+                    <span *ngIf="ALL_DELETE_ALLOWED">
+                      <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                          class="fa fa-trash"></i></button>
+                      </span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25,50]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

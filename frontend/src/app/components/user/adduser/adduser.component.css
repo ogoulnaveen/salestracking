@@ -1,0 +1,15 @@
+.btn-success{
+    background-color: #57aeb6;
+}
+.btn-light{
+    color: #f2f5f8;
+      background-color: #757b80;
+      border-color: #d3d9df;
+  }
+
+  .input-group > .input-group-append > .input-group-text{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }

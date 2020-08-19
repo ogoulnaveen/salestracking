@@ -1,0 +1,17 @@
+.btn-danger{
+    margin-left: 20px;
+}
+
+.thead{
+    background-color: #87ceeb54;
+    color: black;background-color: #57aeb6;
+    color: #fff;
+    font-family: sans-serif;
+  }
+
+  .btn-success{
+    background-color: #57aeb6;
+  
+    border: none;
+    
+  }

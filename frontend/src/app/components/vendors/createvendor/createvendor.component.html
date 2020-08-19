@@ -1,0 +1,102 @@
+<div class="button-page">
+    <div class="row">
+  
+      <div class="col-sm-12">
+        <app-card [title]="'CreateCustomer'  | translate">
+          <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid &&  onSubmit()">
+         
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">{{'Customer Name'  | translate}}<span class="text-danger font-weight-bold"> *</span></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" [(ngModel)]="vendorDetail.customer_name" name="customername"
+                  pattern="^(?:[A-Za-z]+)(?:[A-Za-z _]*)$" #customername="ngModel"[ngClass]="{ 'is-invalid': f.submitted && customername.invalid,
+                 'is-valid': f.submitted && customername.valid}" required />
+                  <div *ngIf="f.submitted && customername.invalid "class="invalid-feedback">
+                  <div
+                      *ngIf="customername.errors.required ">{{'Please provide Customer Name'  | translate}}</div>
+                      <div *ngIf=" customername.errors.pattern"> {{'Provide alphabets only'  | translate}}
+                      </div>
+              </div>
+                </div>
+              </div>
+
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Customer Email'  | translate}}<span class="text-danger font-weight-bold"> *</span></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="vendorDetail.email" name="email"
+                
+                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && email.invalid, 
+              'is-valid': f.submitted && email.valid }" required />
+          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+            <div *ngIf="email.errors.required">{{'Please provide Customer Email'  | translate}}</div>
+        <div *ngIf="email.errors.pattern">{{'Email format should be'  | translate}}<small  class="text-success"><b>{{'jhon@abc.com'  | translate}}</b></small>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Mobile'  | translate}}<span class="text-danger font-weight-bold"> *</span>
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="vendorDetail.phone" name="phone"
+                required pattern="^(?:[0-9()\-+]+)(?:[0-9()\-+]+)$" #phone="ngModel" 
+               [ngClass]="{ 'is-invalid': f.submitted && phone.invalid, 
+               'is-valid': f.submitted && phone.valid }"
+              required/>
+            <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                  <div *ngIf="phone.errors.required"> {{'Please provide phone number'  | translate}}</div>
+              <div *ngIf="phone.errors.pattern"> {{'Phone number should be only numbers'  | translate}}
+                 </div>
+              </div>
+              </div>
+            </div>
+         
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'First Name'  | translate}}<span class="text-danger font-weight-bold"> *</span></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  [(ngModel)]="vendorDetail.first_name"  name="firstname"
+                pattern="[a-zA-Z]+" #firstname="ngModel"[ngClass]="{ 'is-invalid': f.submitted && firstname.invalid,
+                'is-valid': f.submitted && firstname.valid}" required />
+                 <div *ngIf="f.submitted && firstname.invalid "class="invalid-feedback">
+                 <div
+                     *ngIf="firstname.errors.required ">{{'Please provide First Name'  | translate}}</div>
+                     <div *ngIf=" firstname.errors.pattern"> {{'Provide alphabets only'  | translate}}
+                     </div>
+             </div> 
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Last Name'  | translate}}</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="vendorDetail.last_name" name="last_name" >
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">{{'Address'  | translate}}<span class="text-danger font-weight-bold"> *</span>
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="vendorDetail.address" name="address"
+                pattern="^(\s|\S)*(\S)+(\s|\S)*$"  #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid,
+                'is-valid': f.submitted && address.valid}" required />
+                 <div *ngIf="f.submitted && address.invalid "class="invalid-feedback">
+                 <div
+                     *ngIf="address.errors.required ">{{'Please provide Address'  | translate}}</div>
+                     <div *ngIf=" address.errors.pattern"> {{'Provide Valid address'  | translate}}
+                     </div>
+             </div>
+              </div></div>
+            <button  class="btn btn-success btn-round">
+              <span *ngIf="!isUpdate">{{'Save'  | translate}}</span>
+              <span *ngIf="isUpdate">{{'Update'  | translate}}</span>
+          </button>
+          <button type="button" class="btn btn-light btn-round"
+                   (click)="onClickForm()">{{'Reset' | translate}}</button>
+                 <button class="btn btn-danger btn-round" type="button" appCancelbutton >{{'Cancel'  | translate}}</button></form>
+        </app-card>
+      </div>
+  
+  
+  

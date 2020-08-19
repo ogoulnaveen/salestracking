@@ -1,0 +1,40 @@
+aside.pcoded-slider.ng-sidebar {
+  top: 56px;
+}
+
+.slimscroll-wrapper, .scroll-window {
+  width: 100% !important;
+}
+
+.userlist-box {
+  &.show {
+    display: -webkit-box;
+  }
+  &.hide {
+    display: none;
+  }
+}
+
+.thesidebarleft{
+  border-right: 3px #87c5cb solid;
+}
+
+.thesidebarright{
+  border-left: 3px #87c5cb solid;
+}
+
+#logopic{
+  width: 80%;
+}
+
+@media (max-width: 767px){
+  #logopic{
+    width: 35% !important;
+  }
+}
+
+@media (max-width: 769px){
+  #logopic{
+    width: 20%;
+  }
+}

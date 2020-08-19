@@ -1,0 +1,155 @@
+<div class="button-page">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <app-card [title]="'CREATEUSERStab' | translate">
+        <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid &&  onSubmit()">
+          <div class="card-header">
+            <h2> 
+                <span *ngIf="!isUpdate"></span> 
+                <span *ngIf="isUpdate">{{'Add New' | translate}}</span>
+            </h2>
+            </div>
+            <div class="card-body">
+      
+          <div class="form-group row">
+            <label  for="usertype_name" class="col-sm-2 col-form-label">{{'Usertype' | translate}}<span
+              class="text-danger font-weight-bold">
+              *</span></label>
+          
+              <div class="col-sm-10">
+                <select class="form-control" name="usertype_name" [(ngModel)]="userDetail.usertype_name"
+                    #usertype_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && usertype_name.invalid, 
+                    'is-valid': f.submitted && usertype_name.valid }" required>
+                    <option value="">Choose your Permissions</option>
+              
+                 <option value="Admin">Admin</option>
+                 <option value="Manager">Manager</option>
+                 <option value="Sales User">Sales User</option>
+                 <option value="Customers">Customers</option>
+
+                </select> 
+                <div *ngIf="f.submitted && usertype_name.invalid" class="invalid-feedback">
+                    <div *ngIf="usertype_name.errors.required">Requred Usertype</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Email' | translate}} <span
+            class="text-danger font-weight-bold">
+            *</span></label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="userDetail.email" name="email"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.invalid, 
+            'is-valid': f.submitted && email.valid }"
+        required />
+        
+        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.required"> Please provide Email</div>
+      <div *ngIf="email.errors.pattern">Email format should be <small  class="text-success"><b>jhon@abc.com</b></small>
+      </div>
+      </div>
+          </div>
+        </div>
+
+        
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">{{'Password' | translate}} <span
+              class="text-danger font-weight-bold">
+              *</span></label>
+            <div class="input-group col-sm-10">
+              <!-- Change input type to be dynamic -->
+              <input
+                [type]="fieldTextType ? 'text' : 'password'"
+                class="form-control" [(ngModel)]="userDetail.password"
+                name="password" #password="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              [ngClass]="{ 'is-invalid': f.submitted && password.invalid,  
+              'is-valid': f.submitted && password.valid}" required/>
+            
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i
+                    class="fa"
+                    [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }"
+                    (click)="toggleFieldTextType()"
+                  ></i>
+                </span>
+              </div>
+              <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                <div  *ngIf="password.errors.required">{{'Please provide password' | translate}}</div>
+                 <div *ngIf="password.errors.pattern">{{'Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character' | translate}}</div>
+                
+        
+              </div>
+            </div>
+          </div>
+         
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">{{'FirstName' | translate}} <span
+              class="text-danger font-weight-bold">
+              *</span></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" [(ngModel)]="userDetail.first_name" name="first_name"
+              pattern="[a-zA-Z_]+" #first_name="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && first_name.invalid, 
+              'is-valid': f.submitted && first_name.valid }"
+              required /> 
+              <div *ngIf="f.submitted && first_name.invalid "
+              class="invalid-feedback">
+              <div
+                  *ngIf="first_name.errors.required ">
+                  {{'Please provide First name' | translate}} </div>
+                  <div *ngIf=" first_name.errors.pattern">
+                    {{'Provide alphabets only' | translate}}
+                  </div>
+                
+          </div>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">{{'LastName' | translate}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" [(ngModel)]="userDetail.last_name" name="last_name">
+            </div>
+          </div>
+
+     
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">{{'Phone' | translate}} <span
+              class="text-danger font-weight-bold">
+              *</span></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" [(ngModel)]="userDetail.phone" name="phone"
+               required pattern="^(?:[0-9()\-+]+)(?:[0-9()\-+]+)$" #phone="ngModel" 
+               [ngClass]="{ 'is-invalid': f.submitted && phone.invalid, 
+               'is-valid': f.submitted && phone.valid }"
+              required/>
+           
+              <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                  <div *ngIf="phone.errors.required"> {{'Please provide phone number' | translate}}</div>
+               
+              <div *ngIf="phone.errors.pattern"> {{'Phone number should be only numbers' | translate}}
+                 </div>
+              </div>
+            </div>
+          </div>
+          <button  class="btn btn-success btn-round">
+            <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+            <span *ngIf="isUpdate">{{'Update' | translate}}</span>
+        </button>
+        <button type="button" class="btn btn-light btn-round"
+                 (click)="onClickForm()">{{'Reset' | translate}}</button>
+               <button class="btn btn-danger btn-round" type="button" appCancelbutton >{{'Cancel' | translate}}</button>
+          </div>
+        </form>
+      </app-card>
+    </div>

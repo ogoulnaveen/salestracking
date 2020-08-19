@@ -1,0 +1,203 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card *ngIf="this.util.langDataSource.value != 'ar'" [title]="'Know your location'" [classHeader]="true">
+      <div class="row">
+        <div class="col-md-12">
+          <agm-map style="height: 335px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+            (mapClick)="mapClicked($event)">
+            <agm-marker [latitude]="latitude" [longitude]="longitude" (click)="onClickMarker(infoWindow, $event)">
+              <agm-info-window *ngIf="isUpdate" #infoWindow [latitude]="latitude" [longitude]="longitude">
+                <div>
+                  <h6>Email: {{customerVisit.email}}</h6>
+                  <br />
+                  <h6>Name: {{customerVisit.customer_name}}</h6>
+                  <a (click)="openMapInNewTab(latitude,longitude)"> More</a>
+                </div>
+              </agm-info-window>
+            </agm-marker>
+          </agm-map>
+        </div>
+        <div class="col-md-8 mt-4">
+          <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid &&  saveVisit()">
+
+            <div class="row">
+              <div class="col-md-6 form-group"  *ngIf="!isUpdate"><label for="customer_name">{{'Customer Name' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <div class="ng-autocomplete">
+                  <ng-autocomplete [data]="customers" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" [(ngModel)]="customer_name"
+                    name="customer_name" [disabled]="isUpdate">
+                  </ng-autocomplete>
+
+                  <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.customer_name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                  </ng-template>
+                </div>
+                <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+              </div>
+              <div class="col-md-6 form-group" *ngIf="isUpdate">
+                <label for="phone">{{'Customer Name' | translate}}:<span class="text-danger font-weight-bold"> *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.customer_name" name="customerName" readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="phone">{{'Phone' | translate}}:<span class="text-danger font-weight-bold"> *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.phone" name="phone" readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="email">{{'Email' | translate}}:<span class="text-danger font-weight-bold"> *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.email" name="email" readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="firstName">{{'First Name' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.first_name" name="first_name"
+                  readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="lastName">{{'Last Name' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.last_name" name="last_name" readonly>
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="address">{{'Address' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.address" name="address" readonly>
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="visits_note">{{'Meeting Notes' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.visits_note"
+                  pattern="^(\s|\S)*(\S)+(\s|\S)*$" name="visits_note" #visits_note="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visits_note.invalid,
+                'is-valid': f.submitted && visits_note.valid}" required />
+                <div *ngIf="f.submitted && visits_note.invalid " class="invalid-feedback">
+                  <div *ngIf="visits_note.errors.required ">{{'Please add note' | translate}} </div>
+                  <div *ngIf=" visits_note.errors.pattern"> {{'Provide alphabets only' | translate}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-success btn-round">
+                  <span *ngIf="isUpdate">{{'Update' | translate}}</span>
+                  <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+                </button>
+
+                <button class="btn btn-danger btn-round" type="button" appCancelbutton>Cancel</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </app-card>
+    <app-card *ngIf="this.util.langDataSource.value == 'ar'" [title]="'اعرف عنوانك'" [classHeader]="true">
+      <div class="row">
+        <div class="col-md-12">
+          <agm-map style="height: 335px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+            (mapClick)="mapClicked($event)">
+            <agm-marker [latitude]="latitude" [longitude]="longitude" (click)="onClickMarker(infoWindow, $event)">
+              <agm-info-window *ngIf="isUpdate" #infoWindow [latitude]="latitude" [longitude]="longitude">
+                <div>
+                  <h6>Email: {{customerVisit.email}}</h6>
+                  <br />
+                  <h6>Name: {{customerVisit.customer_name}}</h6>
+                  <a (click)="openMapInNewTab(latitude,longitude)"> More</a>
+                </div>
+              </agm-info-window>
+            </agm-marker>
+          </agm-map>
+        </div>
+        isupdate... {{updateFlag}}
+        <div class="col-md-8 mt-4">
+          <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid &&  saveVisit()">
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="customer_name">{{'Customer Name' | translate}}:<span class="text-danger font-weight-bold">
+                    ********</span></label>
+                <div class="ng-autocomplete">
+                  <ng-autocomplete [data]="customers" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" [(ngModel)]="customer_name"
+                    name="customer_name" [disabled]="isUpdate">
+                  </ng-autocomplete>
+
+                  <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.customer_name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="col-md-6 form-group" *ngIf="!isUpdate">
+                <label for="phone">{{'Customer Name' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.customer_name" name="customerName"
+                  readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="phone">{{'Phone' | translate}}:<span class="text-danger font-weight-bold"> *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.phone" name="phone" readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="email">{{'Email' | translate}}:<span class="text-danger font-weight-bold"> *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.email" name="email" readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="firstName">{{'First Name' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.first_name" name="first_name"
+                  readonly>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="lastName">{{'Last Name' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.last_name" name="last_name" readonly>
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="address">{{'Address' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.address" name="address" readonly>
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="customer_name">{{'Address' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.customer_name" name="customer_name"
+                  readonly>
+              </div>
+
+              <div class="col-md-12 form-group">
+                <label for="visits_note">{{'Meeting Notes' | translate}}:<span class="text-danger font-weight-bold">
+                    *</span></label>
+                <input type="text" class="form-control" [(ngModel)]="customerVisit.visits_note"
+                  pattern="^(\s|\S)*(\S)+(\s|\S)*$" name="visits_note" #visits_note="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visits_note.invalid,
+                'is-valid': f.submitted && visits_note.valid}" required />
+                <div *ngIf="f.submitted && visits_note.invalid " class="invalid-feedback">
+                  <div *ngIf="visits_note.errors.required ">{{'Please add note' | translate}} </div>
+                  <div *ngIf=" visits_note.errors.pattern"> {{'Provide alphabets only' | translate}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-success btn-round">
+                  <span *ngIf="isUpdate">{{'Update' | translate}}</span>
+                  <span *ngIf="!isUpdate">{{'Save' | translate}}</span>
+                </button>
+
+                <button class="btn btn-danger btn-round" type="button" appCancelbutton>{{'Cancel' | translate}}</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
+<ng2-toasty [position]="'top-center'"></ng2-toasty>

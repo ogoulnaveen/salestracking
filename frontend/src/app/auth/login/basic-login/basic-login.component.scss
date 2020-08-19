@@ -1,0 +1,57 @@
+.input-group-append .input-group-text{
+    background: transparent;
+    border: 2px solid #ffffff !important;
+    color: #ffffff;
+    border-radius: 0.2em !important;
+    height: 45px;
+    margin-bottom: 10px !important; 
+}
+
+
+
+input
+{
+    background: transparent;
+    border: 2px solid #ffffff !important;
+    color: #ffffff;
+    border-radius: 0.2em !important;
+    height: 45px;
+    margin-bottom: 10px !important;
+}
+
+input:focus{
+    background: transparent;
+    border: 2px solid #ffffff !important;
+    color: #ffffff;
+    border-radius: 0.2em !important;
+    margin-bottom: 100px;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+    font-weight: bold;
+  }
+
+  .btn-primary{
+      background: #ffff;
+      color: #0f8b97;
+      border: 1px solid #0f8b97 !important;
+      font-weight: bold;
+      border-radius: 0.2em !important;
+
+  }
+
+  .languageselect{
+      position: fixed;
+      top: 3%;
+      left: 2%;
+      width: 10%;
+  }
+
+  @media screen and (max-width: 480px) {
+    .languageselect{
+        width: 20% !important;
+    }  
+  }

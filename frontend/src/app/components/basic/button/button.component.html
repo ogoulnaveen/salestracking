@@ -1,0 +1,502 @@
+<div class="button-page">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <app-card [title]="'create users'">
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">User Type</label>
+            <div class="col-sm-10">
+              <select name="select" class="form-control">
+                <option value="opt1">Select Value </option>
+                <option value="opt2">Admin</option>
+                <option value="opt3">Manager</option>
+                <option value="opt4">Sales</option>
+                <option value="opt4">Vendors</option>
+                
+
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">User Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" placeholder="Password input">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">phone</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <button class="btn btn-success btn-round">Save</button>
+
+
+          <button class="btn btn-danger btn-round">Cancel</button>
+  
+
+        </form>
+  
+
+      </app-card>
+    </div>
+
+
+
+
+    <!-- end-->
+
+    <!--
+
+    <div class="col-sm-12">
+      <app-card [title]="'Color States'">
+        <p>Checkout color states of all buttons on popover to buttons</p>
+        <ng-template #popContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#BDC3C7</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#BDC3C7;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#D9DCDE</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#D9DCDE;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#9CA5AB</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#9CA5AB;'></div>
+              </div>
+            </div>
+          </div>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#DEE1E3</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#DEE1E3;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-default" popoverTitle="Default color states" placement="bottom" [ngbPopover]="popContent">Default button</button>
+        <ng-template #primaryContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#1ABC9C</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#1ABC9C;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#28E1BD</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#28E1BD;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#13866F</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#13866F;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#8CDDCD</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#8CDDCD;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-primary" popoverTitle="Primary color states" placement="bottom" [ngbPopover]="primaryContent">Primary button</button>
+        <ng-template #successContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#2ECC71</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#2ECC71;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#54D98C</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#54D98C;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#239A55</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#239A55;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#96E5B8</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#96E5B8;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-success" popoverTitle="Success color states" placement="bottom" [ngbPopover]="successContent">Success button</button>
+        <ng-template #infoContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#5DADE2</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#5DADE2;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#88C3EA</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#88C3EA;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#2993D9</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#2993D9;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#AED6F0</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#AED6F0;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-info" popoverTitle="Info color states" placement="bottom" [ngbPopover]="infoContent">Info button</button>
+        <ng-template #warningContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#F1C40F</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#F1C40F;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#F4D03F</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#F4D03F;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#B8960B</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#B8960B;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#F8E187</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#F8E187;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-warning" popoverTitle="Warning color states" placement="bottom" [ngbPopover]="warningContent">warning button</button>
+        <ng-template #dangerContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#E74C3C</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#E74C3C;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#ED7669</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#ED7669;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#CD2A19</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#CD2A19;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#F3A59D</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#F3A59D;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-danger" popoverTitle="Danger color states" placement="bottom" [ngbPopover]="dangerContent">Danger button</button>
+        <ng-template #inverseContent>
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Normal</span>
+                <span class='block'>
+                          <small>#34495E</small>
+                        </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#34495E;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Hover</span>
+                <span class='block'>
+                        <small>#46627F</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#46627F;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Active</span>
+                <span class='block'>
+                        <small>#1E2A37</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#1E2A37;'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class='color-code'>
+            <div class='row'>
+              <div class='col-sm-6 col-xs-12'>
+                <span class='block'>Disabled</span>
+                <span class='block'>
+                        <small>#99A4AE</small>
+                      </span>
+              </div>
+              <div class='col-sm-6 col-xs-12'>
+                <div class='display-color' style='background-color:#99A4AE;'></div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-inverse" popoverTitle="Inverse color states" placement="bottom" [ngbPopover]="inverseContent">Inverse button</button>
+        <button type="button" class="btn btn-disabled disabled" popoverTitle="Disabled color states" placement="bottom" [ngbPopover]="'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.'">Disabled button</button>
+      </app-card>
+    </div>
+
+-->
+
+
+  </div>
+
+  
+</div>

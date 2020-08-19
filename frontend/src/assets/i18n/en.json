@@ -1,0 +1,72 @@
+{
+
+  "Userstotal" : "Users",
+  "Productstotal" : "Products",
+  "Quotestotal" : "Quotes",
+  "Vendorstotal" : "Customers",
+  "Visitstotal": "Visits",
+  "AddUsers" : "Add Users",
+  "CreateProducts" : "Create Products",
+  "CreateQuotation" : "Create Quotation",
+  "Addcustomers" : "Add customers",
+  "ViewMore" : "View More",
+
+	"Dashboardmenu" : "Dashboard",
+	"Visitsmenu" : "Visits",
+	"Addvisitmenu" : "Add visit",
+	"Searchvisitsmenu" : "Search visits",
+	"Assignvisitsmenu" : "Assign visits",
+	"Schedulevisitsmenu" : "Schedule visits",
+	"Assignedvisitsmenu" :"Assigned visits",
+	"expensesmenu" : "Expenses",
+	"Addexpensemenu" : "Add Expense",
+	"showallexpensemenu" : "Show all expense",
+	"Usersmenu" : "Users",
+	"AddUsersmenu" : "Add Users",
+	"Showallusersmenu" : "Show all Users",
+	"Attendancemenu": "Attendance",
+
+	"AttendanceLoginMenu": "Attendance Login",
+	"AttendenceDetailsMenu": "Attendance Details",
+	"AddUserstypemenu" : "Add Users type",
+	"Usertypelistmenu" : "Users type List",
+	"ProductMenu" : "Products",
+	"Addproductsmenu" : "Add Products",
+	"Showallproductsmenu" :  "Show all Products",
+	"Productcategorymenu" :  "Product Category",
+	"Productcategorylistmenu" :  "Product Category list",
+	"Quotationmenu" :  "Quotation",
+	"AddQuotationmenu" :  "Add Quotation",
+	"Quotationlistmenu" :  "Quotation list",
+	"CreateCustomer":   "Create Customer",
+	"Customersmenu" :  "Customers",
+	"AddCustomersmenu" :  "Add Customers",
+	"Customerslistmenu" :  "Customers list",
+	"SettingsMenu" : "Settings",
+	"HistorySubMenu" : "History",
+	"AttendanceList": "Attendance List",
+
+	"CREATEUSERStab" : "CREATE USERS",
+	"Usertype" :  "Usertype",
+    "UserName" : "User Name",
+	"password"	: "password",
+	"FirstName" : "First Name",
+	"LastName" : "Last Name",
+	"Email" : "Email",
+	"Phone" : "Phone",
+
+	"Sales Sign In":"Sales Sign In",
+	"Sign in":"Sign in",
+	"Don't have an account?":"Don't have an account?",
+	"Sign Up":"Sign Up",
+	"Your Email Address": "Your Email Address",
+	"Password":"Password",
+	"Arabic": "Arabic",
+	"English": "English",
+	"Select Language": "Select Language"
+
+
+	
+
+
+}

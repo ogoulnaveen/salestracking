@@ -1,0 +1,81 @@
+
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'AttendanceList' | translate" [classHeader]="true">
+    <div class="row">
+      <!--
+        <div class="col-md-12 text-right">
+            <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left" (click)="downloadFile()">
+                <i class="fa fa-building-o" aria-hidden="true"></i> CSV
+            </button>
+        </div>
+        -->
+    </div>
+    <div class="row align-items-end mb-4">
+    <div class="col-md-3">
+            <label for="meetingNotes">{{'Sales Email' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                              <ng-autocomplete [data]="allUsers" [searchKeyword]="keyword"
+                                (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                                (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate" [(ngModel)]="userObj" name="userObj"
+                                >
+                              </ng-autocomplete>
+            
+                              <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.email"></a>
+                              </ng-template>
+            
+                              <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                              </ng-template>
+                            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="meetingNotes">{{'From Date' | translate}}:</label>
+            <input type="date" class="form-control" [(ngModel)]="fromDate" />
+        </div>
+        <div class="col-md-3">
+            <label for="meetingNotes">{{'To Date' | translate}}:</label>
+            <input type="date" class="form-control" [(ngModel)]="toDate" />
+        </div>
+        <div class="col-md-2">
+            <div class="btn btn-success search-btn" (click)="filterActions()">{{'Search' | translate}}</div>
+        </div>
+    </div>
+      <div class="table-responsive">
+        <table class="table" [mfData]="userActions" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <thead class="thead">
+                <tr>
+                    <th width="20%">
+                        <mfDefaultSorter by="email">{{'Email' | translate}}</mfDefaultSorter>
+                    </th>
+                    <th width="20%">
+                        <mfDefaultSorter by="customer_name">{{'Date' | translate}}</mfDefaultSorter>
+                    </th>
+                   
+                    <th width="20%">
+                        <mfDefaultSorter by="phone">{{'Action' | translate}}</mfDefaultSorter>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of mf.data">
+                    <td>{{obj.email}}</td>
+                    <td>{{obj.status_id | date: 'short'}}</td>
+                    <td>{{obj.action}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25,50]"></mfBootstrapPaginator>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    </app-card>
+  </div>
+</div>
+<ng2-toasty [position]="'top-center'"></ng2-toasty>

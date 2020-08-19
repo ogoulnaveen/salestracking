@@ -1,0 +1,148 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card *ngIf="this.util.langDataSource.value != 'ar'" [title]="'Schedule Visits'" [classHeader]="true">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row align-items-end mb-4">
+                        <div class="col-md-4">
+                            <label for="email">{{'Sales Email' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="salesUsers" [searchKeyword]="keyword"
+                                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+                                    [(ngModel)]="salesUser" name="salesUser">
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate let-item>
+                                    <a [innerHTML]="item.email"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
+                            <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email">{{'Customer User' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="vendorLists" [searchKeyword]="customer_keyword"
+                                    (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                                    (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate1"
+                                    [notFoundTemplate]="notFoundTemplate1" [(ngModel)]="vendor" name="vendor">
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate1 let-item>
+                                    <a [innerHTML]="item.customer_name"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate1 let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
+                            <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+                        </div>
+                        <div class="col-md-4">
+                            <label for="phone">{{'Customer Phone' | translate}}:</label>
+                            <input type="text" class="form-control" [(ngModel)]="phone" readonly />
+                        </div>
+                        <div class="col-md-12">
+                            <label for="address">{{'Customer Address' | translate}}:</label>
+                            <input type="text" class="form-control" [(ngModel)]="address" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="meetingNotes">{{'Date' | translate}}:</label>
+                            <input type="date" class="form-control" [(ngModel)]="date" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="meetingNotes">{{'Time' | translate}}:</label>
+                            <input type="time" class="form-control" [(ngModel)]="time" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 justify-content-start">
+                            <div class="btn btn-primary btn-round" (click)="scheduleVisits()">
+                                <span *ngIf="!isUpdate">{{'Schedule Visit' | translate}}</span>
+                                <span *ngIf="isUpdate">{{'Update Schedule Visit' | translate}}</span>
+                            </div>
+                            <button class="btn btn-danger btn-round" type="button" appCancelbutton >{{'Cancel' | translate}} </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+        <app-card *ngIf="this.util.langDataSource.value == 'ar'" [title]="'جدول الزيارات'" [classHeader]="true">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row align-items-end mb-4">
+                        <div class="col-md-4">
+                            <label for="email">{{'Sales Email' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="salesUsers" [searchKeyword]="keyword"
+                                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+                                    [(ngModel)]="salesUser" name="salesUser">
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate let-item>
+                                    <a [innerHTML]="item.email"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
+                            <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email">{{'Customer User' | translate}}:</label>
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="vendorLists" [searchKeyword]="customer_keyword"
+                                    (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                                    (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate1"
+                                    [notFoundTemplate]="notFoundTemplate1" [(ngModel)]="vendor" name="vendor">
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate1 let-item>
+                                    <a [innerHTML]="item.customer_name"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate1 let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
+                            <!-- <input type="email" class="form-control" placeholder="Enter name" id="cName"> -->
+                        </div>
+                        <div class="col-md-4">
+                            <label for="phone">{{'Customer Phone' | translate}}:</label>
+                            <input type="text" class="form-control" [(ngModel)]="phone" readonly />
+                        </div>
+                        <div class="col-md-12">
+                            <label for="address">{{'Customer Address' | translate}}:</label>
+                            <input type="text" class="form-control" [(ngModel)]="address" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="meetingNotes">{{'Date' | translate}}:</label>
+                            <input type="date" class="form-control" [(ngModel)]="date" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="meetingNotes">{{'Time' | translate}}:</label>
+                            <input type="time" class="form-control" [(ngModel)]="time" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 justify-content-start">
+                            <div class="btn btn-primary btn-round" (click)="scheduleVisits()">
+                                <span *ngIf="!isUpdate">{{'Schedule Visit' | translate}}</span>
+                                <span *ngIf="isUpdate">{{'Update Schedule Visit' | translate}}</span>
+                            </div>
+                            <button class="btn btn-danger btn-round" type="button" appCancelbutton >{{'Cancel' | translate}} </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+        
+    </div>
+</div>
+<ng2-toasty [position]="'top-center'"></ng2-toasty>

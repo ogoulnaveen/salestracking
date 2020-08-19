@@ -1,0 +1,142 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card *ngIf="this.util.langDataSource.value != 'ar'" [title]="'Assigned Visits'" [classHeader]="true">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-4">
+                    <label for="meetingNotes">{{'From Date' | translate}}:</label>
+                    <input type="date" class="form-control" [(ngModel)]="fromDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="meetingNotes">{{'To Date' | translate}}:</label>
+                    <input type="date" class="form-control" [(ngModel)]="toDate" />
+                </div>
+                <div class="col-md-3">
+                    <div class="btn btn-success search-btn" (click)="filterVisits()">{{'Search' | translate}} </div>
+                </div>
+            </div>
+            <ng-container *ngIf="scheduleVisitLists.length;else noRecords">
+                <div class="table-responsive" >
+                    <table class="table" [mfData]="scheduleVisitLists" #mf="mfDataTable" [mfRowsOnPage]="10">
+                        <thead class="thead">
+                            <tr>
+                                <th width="20%">
+                                    <mfDefaultSorter by="customer_name">{{'Assigned To' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="customer_name">{{'Customer Name' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="phone">{{'Created By' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="email">{{'Date' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="phone">{{'Time' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+                                    {{'Actions' | translate}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of mf.data">
+                                <td>{{obj.sales_email}}</td>
+                                <td>{{obj.vendor_name}}</td>
+                                <td>{{obj.schedule_visit_added_by_email}}</td>
+                                <td>{{obj.date}}</td>
+                                <td>{{obj.time}}</td>
+                                <td *ngIf="SHOW_EDIT_DELETE">
+                                    <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i
+                                            class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                                            class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </ng-container>
+            <ng-template #noRecords>
+                <h3>{{'No records found' | translate}} </h3>
+            </ng-template>
+        </app-card>
+        <app-card *ngIf="this.util.langDataSource.value == 'ar'" [title]="'الزيارات المقررة'" [classHeader]="true">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-4">
+                    <label for="meetingNotes">{{'From Date' | translate}}:</label>
+                    <input type="date" class="form-control" [(ngModel)]="fromDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="meetingNotes">{{'To Date' | translate}}:</label>
+                    <input type="date" class="form-control" [(ngModel)]="toDate" />
+                </div>
+                <div class="col-md-3">
+                    <div class="btn btn-success search-btn" (click)="filterVisits()">{{'Search' | translate}} </div>
+                </div>
+            </div>
+            <ng-container *ngIf="scheduleVisitLists.length;else noRecords">
+                <div class="table-responsive" >
+                    <table class="table" [mfData]="scheduleVisitLists" #mf="mfDataTable" [mfRowsOnPage]="10">
+                        <thead class="thead">
+                            <tr>
+                                <th width="20%">
+                                    <mfDefaultSorter by="customer_name">{{'Assigned To' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="customer_name">{{'Customer Name' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="phone">{{'Created By' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="email">{{'Date' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%">
+                                    <mfDefaultSorter by="phone">{{'Time' | translate}}</mfDefaultSorter>
+                                </th>
+                                <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+                                    {{'Actions' | translate}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of mf.data">
+                                <td>{{obj.sales_email}}</td>
+                                <td>{{obj.vendor_name}}</td>
+                                <td>{{obj.schedule_visit_added_by_email}}</td>
+                                <td>{{obj.date}}</td>
+                                <td>{{obj.time}}</td>
+                                <td *ngIf="SHOW_EDIT_DELETE">
+                                    <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i
+                                            class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                                            class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </ng-container>
+            <ng-template #noRecords>
+                <h3>{{'No records found' | translate}} </h3>
+            </ng-template>
+            </app-card>
+
+    </div>
+</div>
+<ng2-toasty [position]="'top-center'"></ng2-toasty>

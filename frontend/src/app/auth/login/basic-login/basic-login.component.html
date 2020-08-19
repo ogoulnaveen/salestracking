@@ -1,0 +1,102 @@
+<section *ngIf="this.util.langDataSource.value == 'ar'" dir='rtl' class="login p-fixed d-flex text-center bg-primary common-img-bg" style="background: url('assets/images/auth/background@2x.png'); background-size:cover;">
+
+  <select name="select" class="form-control languageselect" [(ngModel)]="lang" (change)="onLanguageSelect($event)">
+    <option value="" >{{'Select Language' | translate}}</option>
+    <option value='en'  data-thumbnail="assets/images/auth/EN.png" > <i class="flag-icon flag-icon-gb m-r-5"></i>{{'English' | translate}}</option>
+    <option value='ar'  data-thumbnail="assets/images/auth/EN.png">   <i class="flag-icon flag-icon-sa m-r-5"></i>{{'Arabic' | translate}}</option>
+  </select>
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-card card-body auth-body">
+          <form class="md-float-material">
+            <div class="text-center">
+            </div>
+            <div >
+              <div class="row m-b-20" style="justify-content: center;">
+                <img src="assets/images/auth/logo_sample_3.png" alt="logo_sample_3.png" style="z-index: 1;">
+               </div>
+              <div class="input-group">
+                <input type="email" class="form-control" [(ngModel)]="email" name="email" [placeholder]="'Your Email Address' | translate">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" [(ngModel)]="password" name="password" [placeholder]="'Password' | translate">
+                <span class="md-line"></span>
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                      (click)="toggleFieldTextType()"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row m-t-30">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="login()">{{'Sign in' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section  *ngIf="this.util.langDataSource.value != 'ar'" dir='ltr' class="login p-fixed d-flex text-center bg-primary common-img-bg" style="background: url('assets/images/auth/background@2x.png'); background-size:cover;">
+  <select name="select" class="form-control languageselect" [(ngModel)]="lang" (change)="onLanguageSelect($event)">
+    <option value="" >{{'Select Language' | translate}}</option>
+    <option value='en'  data-thumbnail="assets/images/auth/EN.png" >{{'English' | translate}}</option>
+    <option value='ar'  data-thumbnail="assets/images/auth/EN.png">{{'Arabic' | translate}}</option>
+  </select>
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-card card-body auth-body">
+          <form class="md-float-material">
+            <div class="text-center">
+        
+            </div>
+            <div >
+              <div class="row m-b-20" style="justify-content: center;">
+                <img src="assets/images/auth/logo_sample_3.png" alt="logo_sample_3.png" style="z-index: 1;">
+  
+              </div>
+              <div class="input-group">
+                <input type="email" class="form-control" [(ngModel)]="email" name="email" [placeholder]="'E-mail' | translate">
+                <span class="md-line"></span>
+              </div>
+          
+              <div class="input-group">
+                <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" [(ngModel)]="password" name="password" [placeholder]="'Password' | translate">
+                <span class="md-line"></span>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                      (click)="toggleFieldTextType()"></i>
+                    </div>
+                </div>
+              </div>
+                <div class="row m-t-30">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="login()">{{'SIGN IN' | translate}}</button>
+                </div>
+              </div></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng2-toasty [position]="'top-center'"></ng2-toasty>

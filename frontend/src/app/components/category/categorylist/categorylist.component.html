@@ -1,0 +1,199 @@
+
+
+ <div class="btn-toolbar text-center well" *ngIf="SHOW_ICONS">
+    <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+      <i class="fa fa-truck" aria-hidden="true"></i> Sell
+    </button>
+    <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+      <i class="fa fa-money" aria-hidden="true"></i> Reciept
+    </button>
+    <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+      <i class="fa fa-credit-card" aria-hidden="true"></i> Payment
+    </button>
+    <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i> Purchase
+    </button>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <app-card [title]="'Add Category'">
+                <form class="form-horizontal form-material" name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+                    <div class="card-header">
+                        <h2> 
+                            <span *ngIf="!isUpdate"></span> 
+                            <span *ngIf="isUpdate">Add New</span>
+                        </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Product Id<span
+                                  class="text-danger font-weight-bold">
+                                  *</span></label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" [(ngModel)]="productDetail.product_id" name="product_id"
+                                  required pattern="[a-zA-Z0-9]+" #product_id="ngModel"  
+                                  [ngClass]="{ 'is-invalid': f.submitted && product_id.invalid, 
+                                  'is-valid': f.submitted && product_id.valid }"
+                                 required/>
+                                 <div *ngIf="f.submitted && product_id.invalid" class="invalid-feedback">
+                                  <div *ngIf="product_id.errors.required"> Please provide product id</div>
+                               
+                              <div *ngIf="product_id.errors.pattern">Id should be only in Alphanumeric
+                                 </div>
+                              </div>
+                                </div>
+                              </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Category<span
+                                  class="text-danger font-weight-bold">
+                                  *</span></label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" [(ngModel)]="productDetail.procategory" name="procategory"
+                                  required pattern="[a-zA-Z]+" #procategory="ngModel"  
+                                  [ngClass]="{ 'is-invalid': f.submitted && procategory.invalid, 
+                                  'is-valid': f.submitted && procategory.valid }"
+                                 required/>
+                                 <div *ngIf="f.submitted && procategory.invalid" class="invalid-feedback">
+                                  <div *ngIf="procategory.errors.required"> Please provide Category</div>
+                               
+                              <div *ngIf="procategory.errors.pattern">Id should be only in Alphabets
+                                 </div>
+                              </div>
+                                </div>
+                              </div>
+                             
+                              <button  class="btn btn-success btn-round">
+                                <span *ngIf="!isUpdate">Save</span>
+                                <span *ngIf="isUpdate">Update</span>
+                            </button>
+                            <button type="button" class="btn btn-light btn-round"
+                                     (click)="onClickForm()">Reset</button>
+                                   <button class="btn btn-danger btn-round" type="button" appCancelbutton >Cancel</button>
+                            </div>
+                </form>
+            </app-card>
+            </div>
+        </div>
+  </div>
+
+
+  <div class="col-md-12 ">
+    <div class="card">
+      <div class="card-body">
+        <h5>Category Details</h5>
+  
+      </div>
+  
+    <!--   <div class="ml-auto">
+        <form class="form-inline">
+          <input class="form-control search-input rounded-0 border-right-0" type="search" aria-label="Search"
+            (keyup)='search($event.target.value)'>
+          <button class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+   -->
+   <div class="container">
+       
+    <div class="row">
+        <div class="col-4">
+            <div class="input-group">
+                 <div class="input-group-append">
+                  <button class="btn btn-secondary" type="submit">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+                <input class="form-control search-input rounded-0 " placeholder="Search here" type="search" aria-label="Search"
+                (keyup)='search($event.target.value)'>
+               
+            </div>
+        </div>
+            
+      <div class="btn-toolbar text-center well1">
+        <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+          <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
+        </button>
+        <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+          <i class="fa fa-building-o" aria-hidden="true"></i> CSV
+        </button>
+        <button type="button" (click)="downloadPdf()" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+          <i class="fa fa-file-pdf-o" aria-hidden="true" ></i> PDF
+        </button>
+        <button type="button"  (click)="exportToExcel()" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+          <i class="fa fa-table" aria-hidden="true"></i> Excel
+        </button>
+        <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+          <i class="fa fa-print" aria-hidden="true"></i>Print
+        </button>
+      <!--   <button (click)="downloadPdf()" class="btn btn-success" >Pdf-Export</button>
+        <button (click)="exportToExcel()" class="btn btn-success">Excel-Export</button>  -->
+    </div>
+    <div class = "vertical"></div> 
+    <div class="btn-toolbar text-center well1">
+      <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a routerLink="/dashboard" routerLinkActive="active" class="routerlink" style="color: white;">Home</a> 
+  
+      </button>
+      <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+        <a  routerLink="/products/productlist" routerLinkActive="active" class="routerlink" style="color: white;">Add Product</a> 
+       
+      </button>
+   
+     
+    
+    <!--   <button (click)="downloadPdf()" class="btn btn-success" >Pdf-Export</button>
+      <button (click)="exportToExcel()" class="btn btn-success">Excel-Export</button>  -->
+  </div>
+    </div>
+  </div>
+      <hr>
+     
+  <div class="card-body product-table p-t-35">
+    <div class="table-responsive">
+      <table class="table" [mfData]="filteredTableDataArray" #mf="mfDataTable" [mfRowsOnPage]="10">
+        <thead class="thead">
+          <tr>
+           <th width="20%">
+                <mfDefaultSorter by="product_id">Category Id</mfDefaultSorter>
+              </th>
+       
+            <th width="20%">
+              <mfDefaultSorter by="procategory">Category Name</mfDefaultSorter>
+            </th>
+            
+        
+            <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of mf.data">
+         <td>{{obj.product_id}}</td>
+            <td>{{obj.procategory}}</td>
+          
+            <td>
+              <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i class="fa fa-edit"></i></button>
+              <span *ngIf="ALL_DELETE_ALLOWED">
+                <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                    class="fa fa-trash"></i></button>
+                </span>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+    </div>
+  </div>

@@ -1,0 +1,99 @@
+<div class="col-md-12 "><div class="card">
+    <div class="card-body">
+      <h5>User Type List</h5> </div><div class="container">
+     
+  <div class="row">
+      <div class="col-4">
+          <div class="input-group">
+               <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+              <input class="form-control search-input rounded-0 " placeholder="Search here" type="search" aria-label="Search"
+              (keyup)='search($event.target.value)'>
+             
+          </div>
+      </div>
+          
+  <!--   <div class="btn-toolbar text-center well1">
+      <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Export
+      </button>
+      <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+        <i class="fa fa-building-o" aria-hidden="true"></i> CSV
+      </button>
+      <button type="button" (click)="downloadPdf()" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+        <i class="fa fa-file-pdf-o" aria-hidden="true" ></i> PDF
+      </button>
+      <button type="button"  (click)="exportToExcel()" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+        <i class="fa fa-table" aria-hidden="true"></i> Excel
+      </button>
+      <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+        <i class="fa fa-print" aria-hidden="true"></i>Print
+      </button>
+   
+  </div> -->
+  <div class = "vertical"></div> 
+  <div class="btn-toolbar text-center well1">
+    <button type="button" class="btn btn-success btn-color btn-bg-color  col-xs-5 margin-left">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <a routerLink="/dashboard" routerLinkActive="active" class="routerlink" style="color: white;">Home</a> 
+
+    </button>
+    <span *ngIf="CAN_ADD">
+      <button type="button" class="btn btn-success btn-color btn-bg-color col-xs-5 margin-left">
+      <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+      <a  routerLink="/user/addusertype" routerLinkActive="active" class="routerlink" style="color: white;">Add User Type</a> 
+    </button>
+    </span>
+</div>
+  </div>
+</div>
+    <hr>
+   
+<div class="card-body product-table p-t-35">
+  <div class="table-responsive">
+    <table class="table" [mfData]="filteredTableDataArr" #mf="mfDataTable" [mfRowsOnPage]="10">
+      <thead class="thead">
+        <tr>
+         <th width="20%">
+              <mfDefaultSorter by="">SL NO</mfDefaultSorter>
+            </th> 
+     
+          <th width="20%">
+            <mfDefaultSorter by="usertype_name">Usertype Name</mfDefaultSorter>
+          </th>
+          
+      
+          <th width="20%" *ngIf="SHOW_EDIT_DELETE">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let obj of mf.data; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{obj.usertype_name}}</td>
+        
+          <td *ngIf="SHOW_EDIT_DELETE">
+            <button type="button" class="btn btn-primary" (click)="onClickEdit(obj)"> <i class="fa fa-edit"></i></button>
+            <span *ngIf="ALL_DELETE_ALLOWED">
+              <button type="button" class="btn btn-danger" (click)="onClickDelete(obj)"> <i
+                  class="fa fa-trash"></i></button>
+              </span>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="10">
+            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+  </div>
+</div>

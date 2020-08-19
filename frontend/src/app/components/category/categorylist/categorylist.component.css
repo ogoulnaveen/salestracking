@@ -1,0 +1,39 @@
+.margin-left{
+    margin-left: 3px !important;
+}
+.well1{
+    display: block;
+     min-height: 0px; 
+       padding: 0px; 
+      margin-bottom: 0px;
+      background-color:white;
+      border:none;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+      margin-left: 30px;
+  }
+  .well{
+    display: block;
+    
+  }
+  
+
+.btn-success{
+    background-color: #117e69;
+  
+    border: none;
+    height: 35px;
+}
+.btn-danger{
+    margin-left: 20px;
+}
+.btn-primary{
+    background-color: #117e69;
+    border: none;
+}
+.thead{
+    background-color: #87ceeb54;
+    color: black;background-color: #117e69;
+    color: #fff;
+    font-family: sans-serif;
+}
